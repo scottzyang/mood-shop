@@ -3,44 +3,67 @@ body {
     font-size: 16px;
     line-height: 1.5;
     margin: 0;
-  }
+}
 
-  .page-header {
+.page-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     background-color: bisque;
-  }
+}
 
-  .page-header ul {
+.page-header ul {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     list-style: none;
     font-family: 'Courier New', Courier, monospace;
-  }
+}
 
-  .page-header a {
+.page-header a {
     display: block;
     padding: 0.5em;
     text-decoration: none;
-  }
+}
 
-  .items {
+.items {
     width: 80%;
     margin: auto;
-
+    border: 10px solid beige;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1em;
-  }
+}
 
-  .items img {
+.items img {
     width: 100%;
     height: auto;
-  }
+}
 
-  .item {
+.item {
     background-color: wheat;
-  }
+    border: 3px solid;
+}
 
+.item p {
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.5em;
+} 
+
+.item p:nth-child(2) {
+    color: black;
+    font-weight: bold;
+}
+
+.item p:nth-child(3) {
+    color: blue;
+    font-weight: bold;
+}
+
+.item button {
+    background-color: orange;
+    color: green;
+    font-weight: bold;
+    display: flex;
+    padding: 1em;
+}
