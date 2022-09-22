@@ -41,7 +41,7 @@ for (let i = 0; i < data.length; i += 1) {
 }
 
 const cart = [];
-
+// _____________________________________________________________
 // add items to cart
 function addItem(name, price) {
   for (let i = 0; i < cart.length; i++) {
@@ -54,6 +54,7 @@ function addItem(name, price) {
   cart.push(item);
 }
 
+// _____________________________________________________________
 //show items
 function showItems() {
   console.log(`You have ${getQty()} items in your cart`);
@@ -63,7 +64,7 @@ function showItems() {
   }
   console.log(`Total in cart: $${getTotal()}`);
 }
-
+// ____________________________________________________________
 // get totals
 function getTotal() {
   let total = 0;
@@ -83,10 +84,31 @@ function getQty() {
   return qty;
 }
 
+// remove items from cart
+function removeItem(name, qty = 0) {
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].name.toLowerCase() === name.toLowerCase()) {
+      if (qty > 0) {
+        cart[i].qty -= qty;
+      }
+      if (cart[i].qty < 1 || qty === 0) {
+        cart.splice(i, 1); // start at index i, and remove that 1 singular item.
+        return;
+      }
+    }
+  }
+}
+
+// 4 apples, 2 orange, 1 iPhone
 addItem("Apple", 0.99);
 addItem("Apple", 0.99);
 addItem("Apple", 0.99);
 addItem("Orange", 1.29);
+addItem("Orange", 1.29);
 addItem("Apple", 0.99);
+addItem("iPhone", 890.99);
+removeItem("apple", 1);
+removeItem("orange", 2);
+removeItem("iPhone");
 
 showItems();
