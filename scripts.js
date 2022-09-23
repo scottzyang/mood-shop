@@ -1,6 +1,9 @@
 import data from "./data.js";
 
 const itemsContainer = document.querySelector("#items");
+const itemList = document.getElementById("item-list"); // grabs the id from the html doc
+const cartQuantity = document.getElementById("cart-quantity");
+const cartTotal = document.getElementById("total");
 
 // the length of our data determines how many times this loop goes around
 const jsonLength = data.length;
@@ -57,12 +60,22 @@ function addItem(name, price) {
 // _____________________________________________________________
 //show items
 function showItems() {
-  console.log(`You have ${getQty()} items in your cart`);
+  // console.log(`You have ${getQty()} items in your cart`);
+  cartQuantity.innerHTML = `You have ${getQty()} items in your cart`;
 
+  let itemStr = "";
   for (let i = 0; i < cart.length; i++) {
-    console.log(`-  ${cart[i].name} ${cart[i].price} x ${cart[i].qty}`);
+    // console.log(`-  ${cart[i].name} ${cart[i].price} x ${cart[i].qty}`);
+    let itemTotal = cart[i].price * cart[i].qty;
+
+    itemStr += `<li>${cart[i].name} $${cart[i].price} x ${
+      cart[i].qty
+    } = ${itemTotal.toFixed(2)}</li>`;
   }
-  console.log(`Total in cart: $${getTotal()}`);
+  itemList.innerHTML = itemStr; // goes into the item list id and adds a <li> tag
+
+  // console.log(`Total in cart: $${getTotal()}`);
+  cartTotal.innerHTML = `Total in cart: $${getTotal()}`;
 }
 // ____________________________________________________________
 // get totals
@@ -107,8 +120,10 @@ addItem("Orange", 1.29);
 addItem("Orange", 1.29);
 addItem("Apple", 0.99);
 addItem("iPhone", 890.99);
+addItem("Water Bottle", 5.99);
 removeItem("apple", 1);
-removeItem("orange", 2);
-removeItem("iPhone");
+removeItem("orange", 1);
 
 showItems();
+
+console.log(itemList);
