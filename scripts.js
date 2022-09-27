@@ -76,11 +76,17 @@ function showItems() {
   let itemStr = "";
   for (let i = 0; i < cart.length; i++) {
     // console.log(`-  ${cart[i].name} ${cart[i].price} x ${cart[i].qty}`);
-    let itemTotal = cart[i].price * cart[i].qty;
 
-    itemStr += `<li>${cart[i].name} $${cart[i].price} x ${
-      cart[i].qty
-    } = ${itemTotal.toFixed(2)}</li>`;
+    const { name, price, qty } = cart[i];
+
+    itemStr += `<li>
+    ${name} $${price} x ${qty} = ${
+      price * qty
+    } <button class="remove" data-name="${name}">Remove</button>
+    <button class="add-one" data-name="${name}"> + </button>
+    <button class="remove-one" data-name="${name}"> - </button>
+    <input class="update" type="number" data-name="${name}">
+    </li>`;
   }
   itemList.innerHTML = itemStr; // goes into the item list id and adds a <li> tag
 
@@ -106,7 +112,7 @@ function getQty() {
   }
   return qty;
 }
-
+// -----------------------------------------------------
 // remove items from cart
 function removeItem(name, qty = 0) {
   for (let i = 0; i < cart.length; i++) {
@@ -116,23 +122,64 @@ function removeItem(name, qty = 0) {
       }
       if (cart[i].qty < 1 || qty === 0) {
         cart.splice(i, 1); // start at index i, and remove that 1 singular item.
-        return;
       }
+      showItems();
+      return;
     }
   }
 }
 
+// -----------------------------------------------------
+function updateCart(name, qty) {
+  for (let i = 0; i < cart.length; i += 1) {
+    if (cart[i].name === name) {
+      if (qty < 1) {
+        removeItem(name);
+        return;
+      }
+      cart[i].qty = qty;
+      showItems();
+      return;
+    }
+  }
+}
+
+// -----------------------------------------------------
+// handle change events on update input
+itemList.onchange = function (e) {
+  if (e.target && e.target.classList.contains("update")) {
+    const name = e.target.dataset.name;
+    const qty = parseInt(e.target.value);
+    updateCart(name, qty);
+  }
+};
+
+// -----------------------------------------------------
+// handle clicks on list
+itemList.onclick = function (e) {
+  if (e.target && e.target.classList.contains("remove")) {
+    const name = e.target.dataset.name; // data-name="???"
+    removeItem(name);
+  } else if (e.target && e.target.classList.contains("add-one")) {
+    const name = e.target.dataset.name;
+    addItem(name);
+  } else if (e.target && e.target.classList.contains("remove-one")) {
+    const name = e.target.dataset.name;
+    removeItem(name, 1);
+  }
+};
+
 // 4 apples, 2 orange, 1 iPhone
-addItem("Apple", 0.99);
-addItem("Apple", 0.99);
-addItem("Apple", 0.99);
-addItem("Orange", 1.29);
-addItem("Orange", 1.29);
-addItem("Apple", 0.99);
-addItem("iPhone", 890.99);
-addItem("Water Bottle", 5.99);
-removeItem("apple", 1);
-removeItem("orange", 1);
+// addItem("Apple", 0.99);
+// addItem("Apple", 0.99);
+// addItem("Apple", 0.99);
+// addItem("Orange", 1.29);
+// addItem("Orange", 1.29);
+// addItem("Apple", 0.99);
+// addItem("iPhone", 890.99);
+// addItem("Water Bottle", 5.99);
+// removeItem("apple", 1);
+// removeItem("orange", 1);
 
 showItems();
 
