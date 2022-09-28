@@ -60,6 +60,7 @@ function addItem(name, price) {
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].name === name) {
       cart[i].qty += 1;
+      showItems();
       return;
     }
   }
@@ -78,11 +79,12 @@ function showItems() {
     // console.log(`-  ${cart[i].name} ${cart[i].price} x ${cart[i].qty}`);
 
     const { name, price, qty } = cart[i];
+    const totalPrice = price * qty;
 
     itemStr += `<li>
-    ${name} $${price} x ${qty} = ${
-      price * qty
-    } <button class="remove" data-name="${name}">Remove</button>
+    ${name} $${price} x ${qty} = ${totalPrice.toFixed(
+      2
+    )} <button class="remove" data-name="${name}">Remove</button>
     <button class="add-one" data-name="${name}"> + </button>
     <button class="remove-one" data-name="${name}"> - </button>
     <input class="update" type="number" data-name="${name}">

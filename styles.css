@@ -3,13 +3,21 @@ body {
     font-size: 16px;
     line-height: 1.5;
     margin: 0;
+    background-color: rgb(238, 232, 221);
+}
+
+button {
+    background-color: rgb(111, 111, 232);
+    color: white;
 }
 
 .page-header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     background-color: bisque;
+    padding: 0 20px 0 20px;
+    font-size: 25px;
 }
 
 .page-header ul {
@@ -38,16 +46,19 @@ body {
 .items img {
     width: 100%;
     height: auto;
+    border-radius: 1px;
 }
 
 .item {
-    background-color: wheat;
-    border: 3px solid;
+    background-color: white;
+    border: 5px solid rgb(210, 210, 154);
+    border-radius: 10px;
 }
 
 .item p {
     font-family: 'Courier New', Courier, monospace;
     line-height: 1.5em;
+    padding: 0 10px 0 10px;
 } 
 
 .item p:nth-child(2) {
@@ -62,8 +73,27 @@ body {
 
 .item button {
     background-color: orange;
-    color: green;
+    color: rgb(0, 0, 0);
     font-weight: bold;
     display: flex;
     padding: 1em;
+}
+
+
+#total, #cart-quantity, #item-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0 30px 0;
+    font-family: 'Gill Sans', 'Gill Sans MT';
+    font-size: 20px;
+}
+
+#item-list > * {
+    list-style: none;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+footer {
+    border: 10px solid wheat;
 }
