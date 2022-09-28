@@ -3,7 +3,7 @@ body {
     font-size: 16px;
     line-height: 1.5;
     margin: 0;
-    background-color: rgb(238, 232, 221);
+    background-color: rgb(255, 235, 197);
 }
 
 button {
@@ -51,7 +51,7 @@ button {
 
 .item {
     background-color: white;
-    border: 5px solid rgb(210, 210, 154);
+    border: 5px solid rgb(228, 228, 135);
     border-radius: 10px;
 }
 
@@ -72,8 +72,8 @@ button {
 }
 
 .item button {
-    background-color: orange;
-    color: rgb(0, 0, 0);
+    background-color: rgb(165, 223, 129);
+    color: rgb(0, 17, 128);
     font-weight: bold;
     display: flex;
     padding: 1em;
@@ -96,4 +96,15 @@ button {
 
 footer {
     border: 10px solid wheat;
+}
+
+#about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid wheat;
+    font-size: 20px;
+    padding: 20px 0 20px 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

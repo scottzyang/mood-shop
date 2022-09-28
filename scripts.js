@@ -4,9 +4,13 @@ const itemsContainer = document.querySelector("#items");
 const itemList = document.getElementById("item-list"); // grabs the id from the html doc
 const cartQuantity = document.getElementById("cart-quantity");
 const cartTotal = document.getElementById("total");
+const about = document.getElementById("about");
 
 // the length of our data determines how many times this loop goes around
 const jsonLength = data.length;
+
+about.innerHTML = `<h2>ABOUT</h2>
+  <p>Welcome to the Mood Shop! Where you can buy all the moods you wish depending on what you feel!</p>`;
 
 for (let i = 0; i < data.length; i += 1) {
   // create a new div element and give it a class name
